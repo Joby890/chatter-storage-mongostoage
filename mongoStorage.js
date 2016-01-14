@@ -45,7 +45,7 @@ module.exports = function(chatter) {
             //console.log(message)
             var channel = chatter.getChannel(message.channel);
             //console.log(channel)
-            channel.messages.push({
+            channel.addMessage({
               id: message.id,
               text: message.text,
               channel : message.channel,
@@ -99,7 +99,7 @@ module.exports = function(chatter) {
 
 
     chatter.setStorage(new MongoStorage())
-    
+
   }
 
 }

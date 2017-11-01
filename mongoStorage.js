@@ -21,7 +21,6 @@ module.exports = function(chatter) {
       loadChannels(done) {
         Channel.find({}, function(err, channels) {
           _.each(channels, function(channel) {
-            //console.log("Loading channel: " + channel.name)
             chatter.createChannel(channel.name);
           })
           done();
@@ -31,7 +30,6 @@ module.exports = function(chatter) {
       loadUsers(done) {
         User.find({}, function(err, users) {
           _.each(users, function(user) {
-            //console.log("Loading user "+user.username)
             chatter.createUser(user.username);
           })
           done();
@@ -42,9 +40,7 @@ module.exports = function(chatter) {
         Message.find({}, function(err, messages) {
           for(var i = 0; i < messages.length; i++) {
             var message = messages[i];
-            //console.log(message)
             var channel = chatter.getChannel(message.channel);
-            //console.log(channel)
             channel.addMessage({
               id: message.id,
               text: message.text,
